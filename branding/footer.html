@@ -1,0 +1,56 @@
+<footer id="nvc-footer" class="nvc-footer2">
+  <div class="nvc-container nvc-fcols">
+    <div class="nvc-fabout">
+      <div class="nvc-fbrand"><img src="https://learn.nvc.ac.in/pluginfile.php/1/core_admin/logocompact/100x100/1/nvc-emblem.jpg" alt=""><strong>Nabadwip Vidyasagar College</strong></div>
+      <p>Affiliated to the University of Kalyani &middot; NAAC Accredited &middot; RUSA Model College. Serving students of Nadia since 1942.</p>
+    </div>
+    <div>
+      <h6>Quick links</h6>
+      <a href="https://nvc.ac.in">College website</a>
+      <a href="https://nvc.ac.in/library/">Central Library</a>
+      <a href="https://repo.nvc.ac.in">Digital Repository</a>
+      <a href="https://learn.nvc.ac.in/course/index.php">All courses</a>
+      <a href="https://learn.nvc.ac.in/login/index.php">Log in</a>
+    </div>
+    <div>
+      <h6>Support</h6>
+      <a href="mailto:moodle-support@example.edu">moodle-support@example.edu</a>
+      <a href="https://learn.nvc.ac.in/login/forgot_password.php">Forgot password</a>
+      <span>Moodle app: enter <em>learn.nvc.ac.in</em></span>
+    </div>
+    <div>
+      <h6>Contact</h6>
+      <span>Nabadwip Vidyasagar College</span>
+      <span>Nabadwip, Nadia &ndash; 741302</span>
+      <span>West Bengal, India</span>
+    </div>
+  </div>
+  <div class="nvc-fbottom">&copy; 2026 Nabadwip Vidyasagar College. All rights reserved.</div>
+</footer>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var page = document.getElementById('page') || document.body;
+  var landing = document.getElementById('nvc-landing');
+  if (landing) {
+    if (document.body.id === 'page-site-index' && !document.body.classList.contains('editing')) {
+      page.insertBefore(landing, page.firstChild);
+      landing.style.display = 'block';
+    } else {
+      landing.parentNode.removeChild(landing);
+    }
+  }
+  var f = document.getElementById('nvc-footer');
+  if (f) { page.appendChild(f); }
+  // infographic slider
+  var slides = document.querySelectorAll('.nvc-slide'), dots = document.querySelectorAll('.nvc-dots button'), cur = 0, timer;
+  function show(n) {
+    if (!slides.length) { return; }
+    slides[cur].classList.remove('is-active'); if (dots[cur]) { dots[cur].classList.remove('is-active'); }
+    cur = (n + slides.length) % slides.length;
+    slides[cur].classList.add('is-active'); if (dots[cur]) { dots[cur].classList.add('is-active'); }
+  }
+  function start() { timer = setInterval(function () { show(cur + 1); }, 5000); }
+  dots.forEach(function (d, i) { d.addEventListener('click', function () { clearInterval(timer); show(i); start(); }); });
+  if (slides.length > 1 && !(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches)) { start(); }
+});
+</script>

@@ -1,0 +1,187 @@
+// ===== NVC Learn — landing, login, footer (Boost) =====
+$nvc-teal: #116E63;
+$nvc-teal-d: #0B4A42;
+$nvc-orange: #F39200;
+$nvc-ink: #1C2B2A;
+$nvc-muted: #5B6B69;
+$nvc-soft: #F3F8F7;
+
+body { -webkit-font-smoothing: antialiased; }
+h1, h2, h3, h4, .h1, .h2, .h3, .h4 { font-family: "Poppins", var(--bs-font-sans-serif, sans-serif); }
+
+// Header
+.navbar.fixed-top { border-bottom: 3px solid $nvc-orange; box-shadow: 0 2px 10px rgba(0,0,0,.06); }
+.navbar .navbar-brand .logo { max-height: 36px; }
+.navbar .navbar-brand::after {
+  content: "NVC Learn"; font-family: "Poppins", sans-serif; font-weight: 700; color: $nvc-teal;
+  margin-left: .5rem; font-size: 1.1rem; letter-spacing: .2px;
+}
+
+// ----- Landing (site home only) -----
+.nvc-landing { display: none; }
+body#page-site-index:not(.editing) {
+  #page-header, #region-main-box .course-content, .secondary-navigation, #page-site-index .page-context-header { display: none !important; }
+  #topofscroll { padding-top: 0; }
+  #region-main { border: 0; padding: 0; background: transparent; }
+}
+.nvc-container { width: 100%; max-width: 1180px; margin: 0 auto; padding: 0 20px; }
+// full-bleed landing + footer (break out of #page side padding)
+.nvc-landing, .nvc-footer2 { margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw); }
+.nvc-footer2 { margin-top: 48px; }
+body#page-site-index .nvc-footer2 { margin-top: 0; }
+#page-wrapper { overflow-x: clip; }
+// guest vs logged-in buttons
+body.notloggedin .nvc-only-in { display: none !important; }
+body:not(.notloggedin) .nvc-only-out { display: none !important; }
+
+.nvc-hero2 {
+  background: radial-gradient(circle at 85% 20%, rgba(243,146,0,.18), transparent 40%),
+              linear-gradient(135deg, $nvc-teal 0%, $nvc-teal-d 100%);
+  color: #fff; padding: 56px 0 64px;
+}
+.nvc-hero-grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: 44px; align-items: center; }
+.nvc-kicker {
+  display: inline-block; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.25);
+  border-radius: 999px; padding: 6px 14px; font-size: .85rem; letter-spacing: .3px; margin-bottom: 18px;
+}
+.nvc-hero2 h1 { color: #fff; font-size: 3rem; line-height: 1.12; font-weight: 700; margin: 0 0 16px; }
+.nvc-hero2 h1 span { color: #FFC266; }
+.nvc-hero-text { font-size: 1.12rem; color: rgba(255,255,255,.9); max-width: 34rem; margin-bottom: 24px; }
+
+.nvc-search {
+  display: flex; align-items: center; background: #fff; border-radius: 14px; padding: 6px 6px 6px 16px;
+  box-shadow: 0 12px 30px rgba(0,0,0,.18); max-width: 34rem;
+  i { color: $nvc-muted; margin-right: 10px; }
+  input { flex: 1; border: 0; outline: 0; font-size: 1rem; padding: 10px 4px; min-width: 0; color: $nvc-ink; }
+  button { border: 0; background: $nvc-orange; color: #1b1b1b; font-weight: 600; border-radius: 10px; padding: 10px 20px; }
+  button:hover { background: darken($nvc-orange, 6%); }
+}
+.nvc-cta { margin-top: 20px; display: flex; flex-wrap: wrap; gap: 12px; }
+.nvc-btn {
+  display: inline-block; padding: 12px 22px; border-radius: 10px; font-weight: 600; text-decoration: none !important;
+  transition: transform .15s ease, box-shadow .15s ease;
+  &:hover { transform: translateY(-1px); box-shadow: 0 8px 18px rgba(0,0,0,.15); }
+}
+.nvc-btn-primary { background: $nvc-orange; color: #1b1b1b !important; }
+.nvc-btn-ghost { border: 1.5px solid rgba(255,255,255,.7); color: #fff !important; }
+
+// Infographic slider
+.nvc-slider { position: relative; border-radius: 28px; box-shadow: 0 24px 60px rgba(0,0,0,.35); aspect-ratio: 3 / 2; }
+.nvc-slide { position: absolute; inset: 0; margin: 0; opacity: 0; transition: opacity .7s ease; }
+.nvc-slide.is-active { opacity: 1; }
+.nvc-slide svg { width: 100%; height: 100%; display: block; }
+.nvc-dots {
+  position: absolute; left: 0; right: 0; bottom: -30px; display: flex; justify-content: center; gap: 8px;
+  button { width: 10px; height: 10px; border-radius: 999px; border: 0; background: rgba(255,255,255,.45); padding: 0; transition: width .3s; }
+  button.is-active { width: 28px; background: $nvc-orange; }
+}
+
+// Stats
+.nvc-stats { background: #fff; border-bottom: 1px solid #E4ECEA; }
+.nvc-stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); text-align: center; padding-top: 26px; padding-bottom: 26px; }
+.nvc-stats-grid div { padding: 6px; border-right: 1px solid #E4ECEA; }
+.nvc-stats-grid div:last-child { border-right: 0; }
+.nvc-stats strong { display: block; font-family: "Poppins", sans-serif; font-size: 1.9rem; color: $nvc-teal; line-height: 1.2; }
+.nvc-stats span { color: $nvc-muted; font-size: .92rem; }
+
+// Sections
+.nvc-section { padding: 64px 0; background: #fff; }
+.nvc-alt { background: $nvc-soft; }
+.nvc-h2 { text-align: center; font-weight: 700; color: $nvc-ink; font-size: 2rem; margin-bottom: 8px; }
+.nvc-sub { text-align: center; color: $nvc-muted; margin: 0 auto 36px; max-width: 40rem; }
+
+.nvc-tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(165px, 1fr)); gap: 14px; }
+.nvc-tiles a {
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; text-align: center;
+  background: #fff; border: 1px solid #E4ECEA; border-radius: 14px; padding: 22px 12px; color: $nvc-ink !important;
+  text-decoration: none !important; font-weight: 500; transition: all .18s ease; min-height: 118px;
+  i { font-size: 1.6rem; color: $nvc-teal; background: $nvc-soft; width: 52px; height: 52px; border-radius: 14px;
+      display: flex; align-items: center; justify-content: center; }
+  &:hover { border-color: $nvc-teal; box-shadow: 0 10px 24px rgba(17,110,99,.14); transform: translateY(-2px); }
+}
+.nvc-tiles a.nvc-tile-alt i { background: #FFF1DD; color: darken($nvc-orange, 8%); }
+
+.nvc-features { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.nvc-features div {
+  background: #fff; border-radius: 16px; padding: 26px 22px; box-shadow: 0 6px 20px rgba(17,110,99,.07);
+  i { font-size: 1.5rem; color: #fff; background: $nvc-teal; width: 50px; height: 50px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
+  h3 { font-size: 1.1rem; font-weight: 600; color: $nvc-ink; }
+  p { color: $nvc-muted; margin: 0; font-size: .95rem; }
+}
+
+.nvc-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; counter-reset: s; }
+.nvc-steps div {
+  position: relative; text-align: center; padding: 10px 16px;
+  b { display: inline-flex; align-items: center; justify-content: center; width: 54px; height: 54px; border-radius: 50%;
+      background: $nvc-teal; color: #fff; font-family: "Poppins", sans-serif; font-size: 1.3rem; margin-bottom: 14px;
+      box-shadow: 0 0 0 8px rgba(17,110,99,.12); }
+  h3 { font-size: 1.1rem; font-weight: 600; color: $nvc-ink; }
+  p { color: $nvc-muted; margin: 0; }
+}
+
+.nvc-res { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.nvc-res a {
+  display: flex; gap: 14px; align-items: flex-start; background: #fff; border: 1px solid #E4ECEA; border-radius: 14px;
+  padding: 18px; text-decoration: none !important; color: $nvc-ink !important; transition: all .18s ease;
+  i { flex: 0 0 44px; height: 44px; border-radius: 12px; background: #FFF1DD; color: darken($nvc-orange, 10%);
+      display: flex; align-items: center; justify-content: center; font-size: 1.25rem; }
+  h3 { font-size: 1rem; font-weight: 600; margin: 0 0 4px; color: $nvc-ink; }
+  p { margin: 0; color: $nvc-muted; font-size: .88rem; line-height: 1.4; }
+  &:hover { border-color: $nvc-orange; box-shadow: 0 10px 24px rgba(243,146,0,.14); transform: translateY(-2px); }
+}
+
+.nvc-banner { background: linear-gradient(135deg, $nvc-teal-d, $nvc-teal); color: #fff; padding: 44px 0; }
+.nvc-banner-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.nvc-banner h2 { color: #fff; font-weight: 700; margin: 0 0 6px; font-size: 1.6rem; }
+.nvc-banner p { margin: 0; color: rgba(255,255,255,.88); }
+
+// Footer
+.nvc-footer2 { background: #0A3A34; color: #CFE3DF; font-size: .92rem; padding-top: 48px; }
+.nvc-fcols { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 28px; padding-bottom: 32px; }
+.nvc-footer2 h6 { color: #fff; font-weight: 600; text-transform: uppercase; letter-spacing: .6px; font-size: .8rem; margin-bottom: 14px; }
+.nvc-footer2 a, .nvc-footer2 span { display: block; color: #CFE3DF; margin-bottom: 8px; text-decoration: none; }
+.nvc-footer2 a:hover { color: #fff; text-decoration: underline; }
+.nvc-fbrand { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; color: #fff; }
+.nvc-fbrand img { width: 42px; height: 42px; border-radius: 8px; background: #fff; padding: 2px; }
+.nvc-fbottom { border-top: 1px solid rgba(255,255,255,.1); text-align: center; padding: 16px 20px; color: #9DBDB7; font-size: .85rem; }
+#page-footer .nvc-footer, .footer-section .nvc-footer2 { display: none; }
+
+// Login page
+body#page-login-index {
+  background: radial-gradient(circle at 15% 15%, rgba(243,146,0,.16), transparent 35%),
+              linear-gradient(135deg, $nvc-teal 0%, $nvc-teal-d 100%) fixed;
+}
+#page-login-index .login-container {
+  border-top: 5px solid $nvc-orange; border-radius: 18px; box-shadow: 0 24px 60px rgba(0,0,0,.30);
+}
+#page-login-index .login-container .login-heading, #page-login-index h1 { font-family: "Poppins", sans-serif; }
+
+// ----- Responsive -----
+@media (max-width: 991.98px) {
+  .nvc-hero-grid { grid-template-columns: 1fr; gap: 56px; }
+  .nvc-hero2 { padding: 36px 0 60px; text-align: center; }
+  .nvc-hero-text, .nvc-search { margin-left: auto; margin-right: auto; }
+  .nvc-cta { justify-content: center; }
+  .nvc-slider { max-width: 560px; margin: 0 auto; width: 100%; }
+  .nvc-features, .nvc-res { grid-template-columns: repeat(2, 1fr); }
+  .nvc-fcols { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 575.98px) {
+  .nvc-hero2 h1 { font-size: 2.1rem; }
+  .nvc-hero-text { font-size: 1rem; }
+  .nvc-search { padding-left: 12px; }
+  .nvc-search button { padding: 10px 14px; }
+  .nvc-cta .nvc-btn { width: 100%; text-align: center; }
+  .nvc-stats-grid { grid-template-columns: repeat(2, 1fr); row-gap: 14px; }
+  .nvc-stats-grid div:nth-child(2) { border-right: 0; }
+  .nvc-section { padding: 44px 0; }
+  .nvc-h2 { font-size: 1.55rem; }
+  .nvc-tiles { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .nvc-tiles a { min-height: 104px; padding: 16px 8px; font-size: .92rem; }
+  .nvc-features, .nvc-steps, .nvc-res { grid-template-columns: 1fr; }
+  .nvc-banner-inner { flex-direction: column; text-align: center; }
+  .nvc-fcols { grid-template-columns: 1fr; text-align: center; }
+  .nvc-fbrand { justify-content: center; }
+  .navbar .navbar-brand::after { font-size: 1rem; }
+}
